@@ -1,1 +1,266 @@
 
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB001
+(
+    `PRPS_NO`            VARCHAR(14)       NOT NULL    COMMENT '청약번호', 
+    `PRPS_DT`            VARCHAR(8)        NULL        COMMENT '청약일자', 
+    `PRPS_TI`            VARCHAR(8)        NULL        COMMENT '청약시각', 
+    `PRDCD`              VARCHAR(9)        NULL        COMMENT '상품코드', 
+    `CONT_NO`            VARCHAR(13)       NULL        COMMENT '계약번호', 
+    `CONT_DT`            VARCHAR(8)        NULL        COMMENT '계약일자', 
+    `CONT_STCD`          VARCHAR(2)        NULL        COMMENT '계약상태코드', 
+    `CSTA_DTL_CD`        VARCHAR(6)        NULL        COMMENT '계약상태상세코드', 
+    `PRPS_STCD`          VARCHAR(2)        NULL        COMMENT '청약상태코드', 
+    `PRPSD_ISUE_DCD`     VARCHAR(1)        NULL        COMMENT '청약서발행구분코드', 
+    `PRPSD_ISUE_NTS`     INT               NULL        COMMENT '청약서발행횟수', 
+    `SLCT_PLNR_ENO`      VARCHAR(10)       NULL        COMMENT '모집설계사사원번호', 
+    `SLCT_DOF_ORG_NO`    VARCHAR(6)        NULL        COMMENT '모집지점조직번호', 
+    `SLCT_GAHQ_ORG_NO`   VARCHAR(6)        NULL        COMMENT '모집GA본부조직번호', 
+    `SLCT_AGNCY_ORG_NO`  VARCHAR(6)        NULL        COMMENT '모집대리점조직번호', 
+    `SLCT_HQ_ORG_NO`     VARCHAR(6)        NULL        COMMENT '모집본부조직번호', 
+    `CLMN_PLNR_ENO`      VARCHAR(10)       NULL        COMMENT '수금설계사사원번호', 
+    `CLMN_DOF_ORG_NO`    VARCHAR(6)        NULL        COMMENT '수금지점조직번호', 
+    `CLMN_GAHQ_ORG_NO`   VARCHAR(6)        NULL        COMMENT '수금GA본부조직번호', 
+    `CLMN_AGNCY_ORG_NO`  VARCHAR(6)        NULL        COMMENT '수금대리점조직번호', 
+    `CLMN_HQ_ORG_NO`     VARCHAR(6)        NULL        COMMENT '수금본부조직번호', 
+    `PM_MCD`             VARCHAR(2)        NULL        COMMENT '납입방법코드', 
+    `PM_CYL_CD`          VARCHAR(2)        NULL        COMMENT '납입주기코드', 
+    `SPRM`               DECIMAL(15, 0)    NULL        COMMENT '합계보험료', 
+    `RLPM_PRM`           DECIMAL(15, 0)    NULL        COMMENT '실납입보험료', 
+    `PPSDSN_NO`          VARCHAR(15)       NULL        COMMENT '가입설계번호', 
+    `SCRTS_DLIV_MCD`     VARCHAR(1)        NULL        COMMENT '증권전달방법코드', 
+    `MASTR_SCOR_NO`      VARCHAR(20)       NULL        COMMENT '마스터스코어번호', 
+    `SCOR_RUN_RCD`       VARCHAR(1)        NULL        COMMENT '스코어실행결과코드', 
+    `FST_PRPSD_PRNT_YN`  VARCHAR(1)        NULL        COMMENT '최초청약서출력여부', 
+    `ELEC_PRPS_YN`       VARCHAR(1)        NULL        COMMENT '전자청약여부', 
+    `DPS_DT`             VARCHAR(8)        NULL        COMMENT '입금일자', 
+    `PRPSD_ISUE_TI`      VARCHAR(6)        NULL        COMMENT '청약서발행시각', 
+    `GA_MBL_ELPS_YN`     VARCHAR(1)        NULL        COMMENT 'GA모바일전자청약여부', 
+    CONSTRAINT  PRIMARY KEY (PRPS_NO)
+);
+
+ALTER TABLE TBMSANB001 COMMENT '청약';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB002
+(
+    `PRPS_NO`           VARCHAR(14)      NOT NULL    COMMENT '청약번호', 
+    `CUST_CONT_RELCD`   VARCHAR(2)       NULL        COMMENT '고객계약관계코드', 
+    `CUST_NO`           VARCHAR(9)       NULL        COMMENT '고객번호', 
+    `PRPS_RELP_SEQ`     INT              NULL        COMMENT '청약관계자순번', 
+    `AGE`               INT              NULL        COMMENT '연령', 
+    `GNDR_CD`           VARCHAR(2)       NULL        COMMENT '성별코드', 
+    `INS_JOB_CD`        VARCHAR(6)       NULL        COMMENT '보험직업코드', 
+    `BENFC_DIST_RT`     NUMERIC(5, 2)    NULL        COMMENT '수익자배분율', 
+    `LAST_RSK_GCD`      VARCHAR(1)       NULL        COMMENT '최종위험등급코드', 
+    `VHCL_KCD`          VARCHAR(6)       NULL        COMMENT '차량종류코드', 
+    `PINSD_CUST_RELCD`  VARCHAR(3)       NULL        COMMENT '주피보험자고객관계코드', 
+    `INSD_CUST_RELCD`   VARCHAR(3)       NULL        COMMENT '피보험자고객관계코드', 
+    `HOBY_CD`           VARCHAR(2)       NULL        COMMENT '취미코드', 
+    `RSK_GCD`           VARCHAR(1)       NULL        COMMENT '위험등급코드', 
+    `DRVG_JOB_CD`       VARCHAR(6)       NULL        COMMENT '운전직업코드', 
+    `NATY_CD`           VARCHAR(3)       NULL        COMMENT '국적코드', 
+    CONSTRAINT  PRIMARY KEY (PRPS_NO)
+);
+
+ALTER TABLE TBMSANB002 COMMENT '청약관계자';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB003
+(
+    `PRPS_INS_NO`     VARCHAR(14)       NOT NULL    COMMENT '청약보험번호', 
+    `CONT_INS_NO`     VARCHAR(13)       NULL        COMMENT '계약보험번호', 
+    `PRPS_NO`         VARCHAR(14)       NULL        COMMENT '청약번호', 
+    `INSCD`           VARCHAR(9)        NULL        COMMENT '보험코드', 
+    `INS_DCD`         VARCHAR(2)        NULL        COMMENT '보험구분코드', 
+    `INS_CONT_DT`     VARCHAR(8)        NULL        COMMENT '보험계약일자', 
+    `INS_PRD_TPCD`    VARCHAR(2)        NULL        COMMENT '보험기간유형코드', 
+    `INS_PRD_TYP_VL`  INT               NULL        COMMENT '보험기간유형값', 
+    `INS_PRD_YCNT`    INT               NULL        COMMENT '보험기간년수', 
+    `PM_PRD_TPCD`     VARCHAR(2)        NULL        COMMENT '납입기간유형코드', 
+    `PM_PRD`          INT               NULL        COMMENT '납입기간', 
+    `PM_PRD_MCNT`     INT               NULL        COMMENT '납입기간개월수', 
+    `PM_CYL_CD`       VARCHAR(2)        NULL        COMMENT '납입주기코드', 
+    `EXPI_DT`         VARCHAR(8)        NULL        COMMENT '만기일자', 
+    `ENT_AMT`         DECIMAL(15, 0)    NULL        COMMENT '가입금액', 
+    `PRM`             DECIMAL(15, 0)    NULL        COMMENT '보험료', 
+    `MCVSN_PRM`       DECIMAL(15, 0)    NULL        COMMENT '월납환산보험료', 
+    `NPRN`            DECIMAL(15, 0)    NULL        COMMENT '순보험료', 
+    `INT_ENT_AGE`     INT               NULL        COMMENT '보험가입연령', 
+    `INS_STCD`        VARCHAR(2)        NULL        COMMENT '보험상태코드', 
+    `INS_STA_DTL_CD`  VARCHAR(6)        NULL        COMMENT '보험상태상세코드', 
+    `TRT_TPCD`        VARCHAR(2)        NULL        COMMENT '특약유형코드', 
+    CONSTRAINT  PRIMARY KEY (PRPS_INS_NO)
+);
+
+ALTER TABLE TBMSANB003 COMMENT '청약보험';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB007
+(
+    `PRPS_NO`             VARCHAR(14)    NOT NULL    COMMENT '청약번호', 
+    `NWBZ_ACT_DCD`        VARCHAR(2)     NOT NULL    COMMENT '신계약계좌구분코드', 
+    `FININ_CD`            VARCHAR(3)     NULL        COMMENT '금융기관코드', 
+    `ACT_NO`              VARCHAR(54)    NULL        COMMENT '계좌번호', 
+    `ACHD_NM`             VARCHAR(40)    NULL        COMMENT '예금주명', 
+    `ACHD_CUST_DSC_NO`    VARCHAR(44)    NULL        COMMENT '예금주고객식별번호', 
+    `ACT_STCD`            VARCHAR(2)     NULL        COMMENT '계좌상태코드', 
+    `PRCS_FININ_CD`       VARCHAR(3)     NULL        COMMENT '처리금융기관코드', 
+    `FININ_RLTM_ANSW_CD`  VARCHAR(4)     NULL        COMMENT '금융기관리얼타임응답코드', 
+    `ACT_STA_VRFC_DTM`    VARCHAR(14)    NULL        COMMENT '계좌상태확인일시', 
+    `FININ_ACHD_NM`       VARCHAR(40)    NULL        COMMENT '금융기관예금주명', 
+    `ACHD_MBR_ROLE_CD`    VARCHAR(2)     NULL        COMMENT '예금주구성원역할코드', 
+    `TRSF_HOPE_DY_CD`     VARCHAR(2)     NULL        COMMENT '이체희망일코드', 
+    `CUST_NO`             VARCHAR(9)     NULL        COMMENT '고객번호', 
+    CONSTRAINT  PRIMARY KEY (PRPS_NO, NWBZ_ACT_DCD)
+);
+
+ALTER TABLE TBMSANB007 COMMENT '청약납입정보';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB009
+(
+    `PRPS_DTL_NO`             VARCHAR(14)       NOT NULL    COMMENT '청약상세번호', 
+    `PRPS_NO`                 VARCHAR(14)       NULL        COMMENT '청약번호', 
+    `PRPS_VLD_DT`             VARCHAR(8)        NULL        COMMENT '청약유효일자', 
+    `PPY_NTS`                 INT               NULL        COMMENT '선납횟수', 
+    `PPY_PRM`                 DECIMAL(15, 0)    NULL        COMMENT '선납보험료', 
+    `PPY_DC_AMT`              DECIMAL(15, 0)    NULL        COMMENT '선납할인금액', 
+    `LGAM_DC_AMT`             DECIMAL(15, 0)    NULL        COMMENT '고액할인금액', 
+    `DC_AMT`                  DECIMAL(15, 0)    NULL        COMMENT '할인금액', 
+    `PRDVS_DCD`               VARCHAR(1)        NULL        COMMENT '약관구분코드', 
+    `ACL_OWNER_YN`            VARCHAR(1)        NULL        COMMENT '실소유자여부', 
+    `ACL_OWNER_NAME`          VARCHAR(40)       NULL        COMMENT '실소유자성명', 
+    `ACL_OWNER_RDSN_NO`       VARCHAR(44)       NULL        COMMENT '실소유자주민번호', 
+    `PWPA_NM`                 VARCHAR(40)       NULL        COMMENT '친권자명', 
+    `MNR_RELCD`               VARCHAR(3)        NULL        COMMENT '미성년자관계코드', 
+    `PWPA_CUST_NO`            VARCHAR(9)        NULL        COMMENT '친권자고객번호', 
+    `LGAM_CONT_YN`            VARCHAR(1)        NULL        COMMENT '고액계약여부', 
+    `COMPA_OBJ_YN`            VARCHAR(1)        NULL        COMMENT '비교대상여부', 
+    `NWBZ_CANP_RES`           DECIMAL(18, 3)    NULL        COMMENT '신계약CANP성적', 
+    `STTR_HEIR_YN`            VARCHAR(1)        NULL        COMMENT '법정상속자여부', 
+    `EXPI_BENFC_YN`           VARCHAR(1)        NULL        COMMENT '만기수익자여부', 
+    `INJ_BENFC_YN`            VARCHAR(1)        NULL        COMMENT '상해수익자여부', 
+    `DEAD_BENFC_YN`           VARCHAR(1)        NULL        COMMENT '사망수익자여부', 
+    `PFC_SELL_ASNT_YN`        VARCHAR(1)        NULL        COMMENT '완전판매동의여부', 
+    `CMM_CONT_RESCS_ASNT_YN`  VARCHAR(1)        NULL        COMMENT '통신계약해지동의여부', 
+    `CORP_ACL_OWNER_DCD`      VARCHAR(2)        NULL        COMMENT '법인실소유자구분코드', 
+    `TX_PURPS_CD`             VARCHAR(2)        NULL        COMMENT '거래목적코드', 
+    `FUND_SRCE_CD`            VARCHAR(2)        NULL        COMMENT '자금출처코드', 
+    `TX_PURPS_ETC_CTNT`       VARCHAR(1000)     NULL        COMMENT '거래목적기타내용', 
+    `FUND_SRCE_ETC_CTNT`      VARCHAR(1000)     NULL        COMMENT '자금출처기타내용', 
+    `CDD_RUN_RST_CD`          VARCHAR(2)        NULL        COMMENT 'CDD실행결과코드', 
+    `EDD_RUN_RST_CD`          VARCHAR(2)        NULL        COMMENT 'EDD실행결과코드', 
+    `FST_PRPSD_PRNT_YN`       VARCHAR(1)        NULL        COMMENT '최초청약서출력여부', 
+    `SINS_SWT_YN`             VARCHAR(1)        NULL        COMMENT 'SI보험전환여부', 
+    `SCOR_NO`                 VARCHAR(15)       NULL        COMMENT '스코어번호', 
+    `SCOR_RUN_RCD`            VARCHAR(1)        NULL        COMMENT '스코어실행결과코드', 
+    `NWBZ_CMP_RES`            DECIMAL(15, 0)    NULL        COMMENT '신계약CMP성적', 
+    `PLN_CD`                  VARCHAR(4)        NULL        COMMENT '플랜코드', 
+    `UNDSGN_RSCD`             VARCHAR(2)        NULL        COMMENT '미지정사유코드', 
+    CONSTRAINT  PRIMARY KEY (PRPS_DTL_NO)
+);
+
+ALTER TABLE TBMSANB009 COMMENT '청약상세';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB014
+(
+    `PRPS_NO`                 VARCHAR(14)    NOT NULL    COMMENT '청약번호P', 
+    `NWBZ_ACT_DCD`            VARCHAR(2)     NOT NULL    COMMENT '신계약계좌구분코드', 
+    `CARD_NO`                 VARCHAR(54)    NULL        COMMENT '카드번호', 
+    `CARD_COP_NO`             VARCHAR(2)     NULL        COMMENT '카드회사코드', 
+    `CARD_OWNER_NM`           VARCHAR(40)    NULL        COMMENT '카드소유자명', 
+    `CARD_OWNER_CUST_DSC_NO`  VARCHAR(44)    NULL        COMMENT '카드소유자고객식별번호', 
+    `CARD_VLD_YM`             VARCHAR(6)     NULL        COMMENT '카드유효년월', 
+    `CARD_STCD`               VARCHAR(2)     NULL        COMMENT '카드상태코드', 
+    `CARD_STA_VRFC_DTM`       VARCHAR(14)    NULL        COMMENT '카드상태확인일시', 
+    `CARD_TRSF_HOPE_DY_CD`    VARCHAR(2)     NULL        COMMENT '카드이체희망일코드', 
+    `ACHD_MBR_ROLE_CD`        VARCHAR(2)     NULL        COMMENT '금융기관예금주명', 
+    `CUST_NO`                 VARCHAR(9)     NULL        COMMENT '고객번호', 
+    CONSTRAINT  PRIMARY KEY (PRPS_NO, NWBZ_ACT_DCD)
+);
+
+ALTER TABLE TBMSANB014 COMMENT '청약신용카드정보';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSANB048
+(
+    `ISUE_REF_NO`      VARCHAR(15)     NOT NULL    COMMENT '발행참조번호', 
+    `ISUE_NO`          VARCHAR(15)     NOT NULL    COMMENT '발행번호', 
+    `GA_ISUE_DCD`      VARCHAR(1)      NULL        COMMENT 'GA발행구분코드', 
+    `GA_FORM_TPCD`     VARCHAR(2)      NULL        COMMENT 'GA양식유형코드', 
+    `FORM_TPCD`        VARCHAR(9)      NULL        COMMENT '양식코드', 
+    `FORM_NM`          VARCHAR(200)    NULL        COMMENT '양식명', 
+    `CMRS_NM`          VARCHAR(200)    NULL        COMMENT '축약명', 
+    `INQ_ORD`          INT             NULL        COMMENT '조회순서', 
+    `ESS_YN`           VARCHAR(1)      NULL        COMMENT '필수여부', 
+    `NOTCL_PRNT_CTNT`  CLOB            NULL        COMMENT '안내장출력내용', 
+    `ALL_PRNT_YN`      VARCHAR(1)      NULL        COMMENT '전체출력여부', 
+    CONSTRAINT  PRIMARY KEY (ISUE_REF_NO, ISUE_NO)
+);
+
+ALTER TABLE TBMSANB048 COMMENT '안내장발행이력';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSACM001
+(
+    `CUST_NO`                  VARCHAR(9)     NOT NULL    COMMENT '고객번호', 
+    `CUST_NM`                  VARCHAR(40)    NULL        COMMENT '고객명', 
+    `CUST_DSC_DCD`             VARCHAR(2)     NULL        COMMENT '고객식별구분코드', 
+    `CUST_DSC_NO`              VARCHAR(44)    NULL        COMMENT '고객식별번호', 
+    `CUST_DCD`                 VARCHAR(2)     NULL        COMMENT '고객구분코드', 
+    `CUST_STCD`                VARCHAR(2)     NULL        COMMENT '고객상태코드', 
+    `CUST_REG_DT`              VARCHAR(8)     NULL        COMMENT '고객등록일자', 
+    `CUST_REG_PLNR_ENO`        VARCHAR(10)    NULL        COMMENT '고객등록설계사사원번호', 
+    `RLPM_VRFC_RCD`            VARCHAR(2)     NULL        COMMENT '실명확인결과코드', 
+    `RLPM_VRFC_DT`             VARCHAR(8)     NULL        COMMENT '실명확인일자', 
+    `BEF_ASNT_DT`              VARCHAR(8)     NULL        COMMENT '사전동의일자', 
+    `BEF_ASNT_REQ_DT`          VARCHAR(8)     NULL        COMMENT '사전동의요청일자', 
+    `BEF_ASNT_APRV_YN`         VARCHAR(1)     NULL        COMMENT '사전동의승인여부', 
+    `BEF_ASNT_APRV_DT`         VARCHAR(8)     NULL        COMMENT '사전동의승인일자', 
+    `BEF_ASNT_APRV_ID`         VARCHAR(10)    NULL        COMMENT '사전동의승인자ID', 
+    `BEF_ASNT_PATH_CD`         VARCHAR(2)     NULL        COMMENT '사전동의경로코드', 
+    `PMTR_RECVPL_ADDR_DCD`     VARCHAR(2)     NULL        COMMENT '우편물수령처주소구분코드', 
+    `TAX_PURPS_FORGN_RSDN_YN`  VARCHAR(1)     NULL        COMMENT '세금목적해외거주여부', 
+    CONSTRAINT  PRIMARY KEY (CUST_NO)
+);
+
+ALTER TABLE TBMSACM001 COMMENT '가망고객';
+
+
+-- TBMSANB001 Table Create SQL
+CREATE TABLE TBMSACM010
+(
+    `CUST_NO`             VARCHAR(9)       NOT NULL    COMMENT '고객번호', 
+    `GNDR_CD`             VARCHAR(1)       NULL        COMMENT '성별코드', 
+    `ACL_BIRDT`           VARCHAR(8)       NULL        COMMENT '실생년월일', 
+    `HOBY_CD`             VARCHAR(2)       NULL        COMMENT '취미코드', 
+    `DY_AVG_SMOK_QTY_CD`  VARCHAR(2)       NULL        COMMENT '일평균흡연량코드', 
+    `SMOK_PRD_CD`         VARCHAR(1)       NULL        COMMENT '흡연기간코드', 
+    `INTLG_DISBP_YN`      VARCHAR(1)       NULL        COMMENT '지적장애인여부', 
+    `CUST_WKPL_NM`        VARCHAR(50)      NULL        COMMENT '고객직장명', 
+    `CUST_WKPL_DEPT_NM`   VARCHAR(30)      NULL        COMMENT '고객직장부서명', 
+    `CUST_WKPL_ENCOM_DT`  VARCHAR(8)       NULL        COMMENT '고객직장입사일자', 
+    `INS_JOB_CD`          VARCHAR(6)       NULL        COMMENT '보험직업코드', 
+    `VHCL_KCD`            VARCHAR(6)       NULL        COMMENT '차량종류코드', 
+    `NATY_CD`             VARCHAR(3)       NULL        COMMENT '국적코드', 
+    `NATY_DCD`            VARCHAR(2)       NULL        COMMENT '국적구분코드', 
+    `WEEK_AVG_DRNK_CD`    VARCHAR(1)       NULL        COMMENT '주간평균음주코드', 
+    `DRNKQ`               NUMERIC(3, 1)    NULL        COMMENT '음주량', 
+    `DRNK_KCD`            VARCHAR(2)       NULL        COMMENT '음주종류코드', 
+    CONSTRAINT  PRIMARY KEY (CUST_NO)
+);
+
+ALTER TABLE TBMSACM010 COMMENT '가망개인고객';
+
+
